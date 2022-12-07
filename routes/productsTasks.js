@@ -11,8 +11,8 @@ const {
 
 
 router.get('/', getProducts)
-    .post('/',createProduct)
-    .patch('/',updateProduct)
+      .post('/',createProduct)
+      .patch('/',updateProduct)
 
 
 

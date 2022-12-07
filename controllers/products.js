@@ -1,6 +1,7 @@
 const Product = require("../models/productModel")
 
 
+<<<<<<< Updated upstream
 const createProduct = (req,res) => {
     const product = new Product(
         {
@@ -10,8 +11,17 @@ const createProduct = (req,res) => {
     )
     product.save()
         .then(data => {res.json(data)})
+=======
+const createProduct = async (req,res) => {
+    try
+    { 
+        const task = await Product.create(req.body)
+        
+        res.status(201).json(task)
+    } 
+    catch (err) {console.log(err) }
+>>>>>>> Stashed changes
 }      
-
 
 const getProducts = (req, res) => {
     res.send('get all products')

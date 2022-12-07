@@ -6,8 +6,6 @@ const connectDB = require('./db/connect')
 const bodyParser = require('body-parser')
 
 
-app.use(bodyParser.json());
-
 app.get('/', (req, res) => {
   res.send('Revisado BACK END')
 })
