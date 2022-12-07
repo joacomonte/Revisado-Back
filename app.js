@@ -7,7 +7,7 @@ const { json } = require('express')
 
 app.use(express.json());
 
-
+//hola
 app.get('/', (req, res) => {
   res.send('Revisado BACK END')
 })
