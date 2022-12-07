@@ -3,11 +3,13 @@ const app = express()
 const port = process.env.PORT || 3000;
 const products = require('./routes/productsTasks')
 const connectDB = require('./db/connect')
-require('dotenv').config()
+import dotenv from 'dotenv';
 const cors = require('cors')
 
 app.use(express.json());
 app.use(cors())
+
+dotenv.config();
 
 //hola
 app.get('/', (req, res) => {
@@ -30,3 +32,16 @@ const start = async () => {
 }
 
 start();
+
+
+// const mongoose = require('mongoose');
+// require('dotenv').config();
+
+// const dbUser = process.env.DB_USER;
+// const dbPassword = process.env.DB_PASSWORD;
+// const dbHost = process.env.DB_HOST;
+// const dbName = process.env.DB_NAME;
+
+// const connectionString = `mongodb://${dbUser}:${dbPassword}@${dbHost}/${dbName}`;
+
+// mongoose.connect(connectionString, { useNewUrlParser: true });
