@@ -12,7 +12,24 @@ const productSchema = new mongoose.Schema({
     model: String,
     price: Number,
 });
-const Product = mongoose.model('Product', productSchema)
+
+const usersSchema = new mongoose.Schema({
+    nameDisplay : {                 
+        type : String, 
+        required: [true, "must have nameDisplay"],
+        trim: true,
+        maxlength: [20, "name cant have more than 20 caracters"]
+    },
+    brand: String,
+    model: String,
+    price: Number,
+});
 
 
-module.exports = Product;
+
+const Products = mongoose.model('Products', productSchema)
+const User = mongoose.model('Users', usersSchema)
+
+module.exports = {Products, User};
+
+

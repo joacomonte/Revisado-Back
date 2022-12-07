@@ -3,15 +3,12 @@ const app = express()
 const port = process.env.PORT || 3000;
 const products = require('./routes/productsTasks')
 const connectDB = require('./db/connect')
-import dotenv from 'dotenv';
-const cors = require('cors')
+require("dotenv").config();
+
 
 app.use(express.json());
-app.use(cors())
 
-dotenv.config();
 
-//hola
 app.get('/', (req, res) => {
   res.send('Revisado BACK END')
 })
