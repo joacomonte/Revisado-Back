@@ -4,14 +4,10 @@ const port = process.env.PORT || 3000;
 const products = require('./routes/productsTasks')
 const connectDB = require('./db/connect')
 require("dotenv").config();
-const cors = require('cors')
 
 app.use(express.json());
-app.use(cors())
 
 
-
-//hola
 app.get('/', (req, res) => {
   res.send('Revisado BACK END')
 })

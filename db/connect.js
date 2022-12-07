@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 require("dotenv").config();
 
 
-const connectionString = "mongodb+srv://revisado:playstation2@cluster0.dlopt2u.mongodb.net/Products?retryWrites=true&w=majority"
+// "mongodb+srv://revisado:playstation2@cluster0.dlopt2u.mongodb.net/Revisado?retryWrites=true&w=majority"
 
 const connectDB = (url)=> {
     return mongoose

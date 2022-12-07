@@ -13,7 +13,7 @@ const productSchema = new mongoose.Schema({
     price: Number,
 });
 
-const productSchema2 = new mongoose.Schema({
+const usersSchema = new mongoose.Schema({
     nameDisplay : {                 
         type : String, 
         required: [true, "must have nameDisplay"],
@@ -25,7 +25,11 @@ const productSchema2 = new mongoose.Schema({
     price: Number,
 });
 
-const Product = mongoose.model('Products', productSchema)
-      Product = mongoose.model('Products2', productSchema2)
 
-module.exports = Product;
+
+const Product = mongoose.model('Products', productSchema)
+const User = mongoose.model('Users', usersSchema)
+
+module.exports = {Product, User};
+
+
