@@ -3,13 +3,13 @@ const app = express()
 const port = process.env.PORT || 3000;
 const products = require('./routes/productsTasks')
 const connectDB = require('./db/connect')
-import dotenv from 'dotenv';
+require("dotenv").config();
 const cors = require('cors')
 
 app.use(express.json());
 app.use(cors())
 
-dotenv.config();
+
 
 //hola
 app.get('/', (req, res) => {
