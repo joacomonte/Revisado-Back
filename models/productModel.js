@@ -2,7 +2,12 @@ const mongoose = require('mongoose');
 
 // Create a product schema
 const productSchema = new mongoose.Schema({
-    nameDisplay: String,
+    nameDisplay : {                 
+        type : String, 
+        required: [true, "must have nameDisplay"],
+        trim: true,
+        maxlength: [20, "name cant have more than 20 caracters"]
+    },
     brand: String,
     model: String,
     price: Number,

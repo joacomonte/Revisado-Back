@@ -7,11 +7,16 @@ const createProduct = async (req,res) => {
         const task = await Product.create(req.body)
         res.status(201).json(task)
     } 
-    catch (err) {console.log(err) }
+    catch (err) {res.status(500).json({msg: err}) }
 }      
 
-const getProducts = (req, res) => {
-    res.send('get all products')
+const getProducts = async (req, res) => {
+    try
+    { 
+        const task = await Product.find({})
+        res.status(200).json({task})
+    } 
+    catch (err) {res.status(500).json({msg: err}) }
 }
 
 const createProductPostman = (req, res) => {

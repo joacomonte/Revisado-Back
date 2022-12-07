@@ -3,6 +3,7 @@ const app = express()
 const port = 3000
 const products = require('./routes/productsTasks')
 const connectDB = require('./db/connect')
+require('dotenv').config()
 
 app.use(express.json());
 
@@ -19,7 +20,7 @@ app.use('/api/products', products)
 
 const start = async () => { 
  try{ 
-    await connectDB()
+    await connectDB(process.env.MONGO_URL)
     app.listen(port, () => { console.log(`Revisado listening on port ${port}`)})
  } catch(err){
     console.log(err)
