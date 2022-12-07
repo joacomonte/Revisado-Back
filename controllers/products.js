@@ -12,7 +12,6 @@ const createProduct = (req,res) => {
         .then(data => {res.json(data)})
 }      
 
-
 const getProducts = (req, res) => {
     res.send('get all products')
 }
