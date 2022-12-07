@@ -3,7 +3,6 @@ const app = express()
 const port = 3000
 const products = require('./routes/productsTasks')
 const connectDB = require('./db/connect')
-const { json } = require('express')
 
 app.use(express.json());
 
