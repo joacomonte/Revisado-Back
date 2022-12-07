@@ -10,9 +10,8 @@ const {
 } = require('../controllers/products.js');
 
 
-router.get('/', getProducts)
-    .post('/',createProduct)
-    .patch('/',updateProduct)
+
+router.route('/').get(getProducts);
 
 
 

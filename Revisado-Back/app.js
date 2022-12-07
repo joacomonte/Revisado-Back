@@ -3,14 +3,13 @@ const app = express()
 const port = 3000
 const products = require('./routes/productsTasks')
 const connectDB = require('./db/connect')
-const bodyParser = require('body-parser')
 
-
-app.use(bodyParser.json());
 
 app.get('/', (req, res) => {
   res.send('Revisado BACK END')
 })
+
+
 
 
 // routes
