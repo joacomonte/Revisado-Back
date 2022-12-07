@@ -1,15 +1,13 @@
 const Product = require("../models/productModel")
 
 
-const createProduct = (req,res) => {
-    const product = new Product(
-        {
-            model:req.body.model,
-            color:req.body.color
-        }
-    )
-    product.save()
-        .then(data => {res.json(data)})
+const createProduct = async (req,res) => {
+    try
+    { 
+        const task = await Product.create(req.body)
+        res.status(201).json(task)
+    } 
+    catch (err) {console.log(err) }
 }      
 
 const getProducts = (req, res) => {
