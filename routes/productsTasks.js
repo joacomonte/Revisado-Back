@@ -2,17 +2,19 @@ const express = require('express');
 const router = express.Router();
 
 const {
-    getProducts,
+    getAllProducts,
     createProduct,
-    createProductPostman,
+    getSingleProduct,
     updateProduct,
     deleteProduct,
 } = require('../controllers/products.js');
 
 
-router.get('/', getProducts)
+router.get('/', getAllProducts)
       .post('/',createProduct)
-      .patch('/',updateProduct)
+
+      
+router.get('/:id', getSingleProduct).patch('/:id',updateProduct).delete('/:id',deleteProduct)
 
 
 

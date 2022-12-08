@@ -5,16 +5,18 @@ const port = process.env.PORT || 3000;
 const connectDB = require('./db/connect')
 require("dotenv").config();
 
-
-
+// midleware
+app.use(express.json())
 
 app.get('/', (req, res) => {
   res.send('Revisado BACK END')
 })
 
+// controllers
 const products = require('./routes/productsTasks')
 app.use('/api/products', products)
 
+// api start
 const start = async () => { 
  try{ 
     await connectDB("mongodb+srv://revisado:playstation2@cluster0.dlopt2u.mongodb.net/Revisado?retryWrites=true&w=majority")

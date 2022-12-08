@@ -17,7 +17,6 @@ const usersSchema = new mongoose.Schema({
     nameDisplay : {                 
         type : String, 
         required: [true, "must have nameDisplay"],
-        trim: true,
         maxlength: [20, "name cant have more than 20 caracters"]
     },
     brand: String,
