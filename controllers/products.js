@@ -13,7 +13,7 @@ const getAllProducts = async (req, res) => {
     try{ 
         setTimeout(async () => {
             const task = await Products.find();
-            res.status(200).json(task)},1000)
+            res.status(200).json(task)},10)
     } 
     catch (err) {res.status(500).json({msg: err}) }
 }
