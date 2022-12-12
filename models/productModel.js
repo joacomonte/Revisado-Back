@@ -4,54 +4,54 @@ const mongoose = require('mongoose');
 const productSchema = new mongoose.Schema({
     idProduct : {                 
         type : Number, 
-        required: [true, "must have idProduct"],
+        required: [false, "must have idProduct"],
         trim: true,
     },
     brand : {                 
         type : String, 
-        required: [true, "must have brand"],
+        required: [false, "must have brand"],
         trim: true,
         maxlength: [20, "brand cant have more than 20 caracters"]
     },
     modelName : {                 
         type : String, 
-        required: [true, "must have modelName"],
+        required: [false, "must have modelName"],
         trim: true,
         maxlength: [20, "modelName cant have more than 20 caracters"]
     },
     modelNumber : {                 
         type : String, 
-        required: [true, "must have  modelNumber"],
+        required: [false, "must have  modelNumber"],
         trim: true,
         maxlength: [30, "modelNumber cant have more than 20 caracters"]
     },
     caracts : {                 
         type : String, 
-        required: [true, "must have caracts"],
+        required: [false, "must have caracts"],
         trim: true,
         maxlength: [30, "caracts  cant have more than 20 caracters"]
     },
     nameToDisplay : {                 
         type : String, 
-        required: [true, "must have nameToDisplay"],
+        required: [false, "must have nameToDisplay"],
         trim: true,
         maxlength: [30, "nameToDisplay cant have more than 20 caracters"]
     },
     price : {                 
         type : Number, 
-        required: [true, "must have  price "],
+        required: [false, "must have  price "],
         trim: true,
         maxlength: [30, "price cant have more than 20 caracters"]
     },
     color : {                 
         type : String, 
-        required: [true, "must have color"],
+        required: [false, "must have color"],
         trim: true,
         maxlength: [30, "spects cant have more than 20 caracters"]
     },
     details : {                 
         type : String, 
-        required: [true, "must have details"],
+        required: [false, "must have details"],
         trim: true,
         maxlength: [30, "spects cant have more than 20 caracters"]
     },
