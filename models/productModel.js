@@ -68,7 +68,7 @@ const usersSchema = new mongoose.Schema({
     price: Number,
 });
 
-
+//hola
 
 const Products = mongoose.model('Products', productSchema)
 const User = mongoose.model('Users', usersSchema)
