@@ -4,14 +4,17 @@ const mongoose = require('mongoose');
 const productSchema = new mongoose.Schema({
     idProduct : {                 
         type : Number, 
-        required: [false, "must have idProduct"],
+        required: [true, "must have  idProduct"],
         trim: true,
+        unique: true,
     },
     brand : {                 
         type : String, 
-        required: [false, "must have brand"],
-        trim: true,
-        maxlength: [20, "brand cant have more than 20 caracters"]
+        required: [true, "must have brand"],
+        enum: {
+            values: ['sony', 'apple', 'google', 'samsung'],
+            message : '{VALUE} NOT SUPPORTED' 
+        }, 
     },
     modelName : {                 
         type : String, 
@@ -55,22 +58,14 @@ const productSchema = new mongoose.Schema({
         trim: true,
         maxlength: [30, "spects cant have more than 20 caracters"]
     },
-});
+    publishBy : {
+        type : mongoose.Types.ObjectId,
+        ref : 'User',
+        required : [true, 'Please provide userID']
+    }
+}, {timestamps : true });
 
-const usersSchema = new mongoose.Schema({
-    nameDisplay : {                 
-        type : String, 
-        required: [true, "must have nameDisplay"],
-        maxlength: [20, "name cant have more than 20 caracters"]
-    },
-    brand: String,
-    model: String,
-    price: Number,
-});
-
-//chau
 
 const Products = mongoose.model('Products', productSchema)
-const User = mongoose.model('Users', usersSchema)
 
-module.exports = {Products, User};
+module.exports = { Products };
