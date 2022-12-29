@@ -4,13 +4,13 @@ const mongoose = require('mongoose');
 const productSchema = new mongoose.Schema({
     idProduct : {                 
         type : Number, 
-        required: [true, "must have  idProduct"],
+        required: [false, "must have  idProduct"],
         trim: true,
         unique: true,
     },
     brand : {                 
         type : String, 
-        required: [true, "must have brand"],
+        required: [false, "must have brand"],
         enum: {
             values: ['sony', 'apple', 'google', 'samsung'],
             message : '{VALUE} NOT SUPPORTED' 
@@ -61,7 +61,7 @@ const productSchema = new mongoose.Schema({
     publishBy : {
         type : mongoose.Types.ObjectId,
         ref : 'User',
-        required : [true, 'Please provide userID']
+        required : [false, 'Please provide userID']
     }
 }, {timestamps : true });
 
