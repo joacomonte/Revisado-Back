@@ -1,5 +1,5 @@
-const BadRequestError = require('./bad-request');
-const UnauthenticatedError = require('./unauthenticated')
-const NotFoundError = require('./notFoundError')
+const errorBadRequest = require('./errorBadRequest');
+const errorUnauthenticated = require('./errorUnauthenticated')
+const errorNotFound = require('./errorNotFound')
 
-module.exports = { BadRequestError, UnauthenticatedError, NotFoundError };
+module.exports = { errorBadRequest, errorUnauthenticated, errorNotFound };

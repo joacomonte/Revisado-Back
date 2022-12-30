@@ -10,6 +10,7 @@ if(!authHeader || !authHeader.startsWith('Bearer')){
     throw new UnauthenticatedError('Authentication Invalid')
 }
 
+//saltea el "bearer"
 const token = authHeader.split(' ')[1] 
 
 try{
