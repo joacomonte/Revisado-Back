@@ -5,6 +5,10 @@ const app = express()
 app.use(express.json())
 const connectDB = require('./db/connect')
 const auth = require('./middleware/authenticator')
+const cors = require('cors');
+
+app.use(cors())
+
 // controllers
 const  userLogin = require('./routes/userLogin')
 const { notAuthRouter,  productsRouter } = require('./routes/productsTasks')
