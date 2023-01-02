@@ -1,29 +1,29 @@
-const CustomErrorApi = require('../errors/CustomErrorApi');
 const { Users } = require('../models/users');
-const { StatusCodes } = require('http-status-codes')
+
 const  { BadRequestError, UnauthenticatedError }  = require('../errors/indexError')
 
+// const { StatusCodes } = require('http-status-codes')
+// const CustomErrorApi = require('../errors/CustomErrorApi');
 
-const register = async (req, res) => {
-  const user  = await Users.create({...req.body});
-  const token =  user.createJWT();
-  res.status(StatusCodes.CREATED).json({ user: {name : user.name}, token })
-}
 
 const login = async (req, res) => {
   const { email, password } = req.body;
   if(!email || !password){
-    throw new BadRequestError("Pls provie username and password")
+    throw new BadRequestError("no se introdujo mail o password")
   }
+
+  
   //check user
   const user = await Users.findOne({ email })
   if(!user){ 
-    throw new UnauthenticatedError('Invalid credentials')
+    throw new UnauthenticatedError('no se encontro el usuario por email')
   }
+
+
   // compare password
   const passwordCorrect = await user.comparePassword(password)
   if(!passwordCorrect){ 
-    throw new UnauthenticatedError('Invalid password')
+    throw new UnauthenticatedError('se comparo la contraseña y no es correcta')
   }
   const token = user.createJWT();
   res.status(200).json({ user: {name : user.name}, token })
@@ -32,6 +32,5 @@ const login = async (req, res) => {
 
 
 module.exports = {
-  register,
   login,
 }

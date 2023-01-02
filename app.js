@@ -6,7 +6,7 @@ app.use(express.json())
 const connectDB = require('./db/connect')
 const auth = require('./middleware/authenticator')
 // controllers
-const  mainRouter = require('./routes/main')
+const  userLogin = require('./routes/userLogin')
 const { notAuthRouter,  productsRouter } = require('./routes/productsTasks')
 // errors
 const notFound = require('./middleware/not-found')
@@ -15,7 +15,7 @@ const errorHanddler = require('./middleware/errorHanddler')
 // routes
 app.get('/', (req, res) => { res.send('Revisado BACK END') })
 app.use('/api/products/all', notAuthRouter );
-app.use('/api/auth', mainRouter);
+app.use('/api/auth', userLogin);
 app.use('/api/products', auth,  productsRouter);
 
 app.use(notFound);
