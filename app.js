@@ -20,6 +20,7 @@ const { allProductsRouter,  productsRouter } = require('./routes/productsTasks')
 const notFound = require('./middleware/not-found')
 const errorHanddler = require('./middleware/errorHanddler');
 const { verify } = require('jsonwebtoken');
+const verifyJWT = require('./middleware/verifyJWT.js');
 
 
 
@@ -29,7 +30,7 @@ app.use('/api/products/all', allProductsRouter );
 // app.use('/api/auth', userLogin);
 app.use('/api/products', auth, productsRouter);
 app.use('/register',require('./routes/registerRoute'))
-app.use('/auth', require('./routes/authRoute'))
+app.use('/auth',verifyJWT, require('./routes/authRoute'))
 
 
 

@@ -32,15 +32,16 @@ const loginHandleFunction = async (req,res) => {
         {
             "email":user.email,
         },
-        ACCESS_TOKEN_SECRET,{ expiresIn: '30s' }
+        ACCESS_TOKEN_SECRET,
+        { expiresIn: '1d' }
     )
 
     const refreshToken = jwt.sign(
-        {"name": user.name},
+        {"email":user.email},
         
         REFRESH_TOKEN_SECRET,
         // process.env.REFRESH_TOKEN_SECRET,
-        { expiresIn: '1d' }
+        { expiresIn: '30d' }
     )
 
     //saving refreshToken with current user
@@ -55,7 +56,7 @@ const loginHandleFunction = async (req,res) => {
     {
         httpOnly: true, 
         sameSite:'None',
-        secure: true
+        // secure: true
     });
     res.json({accessToken})
 
