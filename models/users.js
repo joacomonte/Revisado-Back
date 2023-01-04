@@ -18,8 +18,10 @@ const usersSchema = new mongoose.Schema({
     password : {                 
         type : String, 
         required: [true, "must have name"],
-        maxlength: [20, "name cant have more than 20 caracters"],
-        minlength: [2, "Must have more than 2 letters"],
+    },
+    refreshToken : {                 
+        type : String, 
+        required: false,
     },
 });
 
@@ -37,6 +39,12 @@ usersSchema.methods.comparePassword = async function(posiblePassword) {
  const isMatch = await bcrypt.compare(posiblePassword, this.password);
  return isMatch
 }    
+
+usersSchema.methods.setRefreshToken = async function(token) {
+    this.refreshToken=token;
+}    
+
+
 
 
 const Users = mongoose.model('Users', usersSchema)

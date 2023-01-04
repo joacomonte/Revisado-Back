@@ -1,6 +1,6 @@
 const express = require('express');
 const productsRouter = express.Router();
-const notAuthRouter = express.Router();
+const allProductsRouter = express.Router();
 
 const {
     getAllProducts,
@@ -15,8 +15,8 @@ const {
 productsRouter.route('/').get(getYourProducts).post(createProduct)
 productsRouter.get('/:id', getSingleProduct).patch('/:id',updateProduct).delete('/:id',deleteProduct)
 
-notAuthRouter.route('/').get(getAllProducts)
-notAuthRouter.get('/:id', getSingleProduct)
+allProductsRouter.route('/').get(getAllProducts)
+allProductsRouter.get('/:id', getSingleProduct)
 
 
-module.exports = {  productsRouter, notAuthRouter };
+module.exports = {  productsRouter, allProductsRouter };

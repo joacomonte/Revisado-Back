@@ -1,26 +1,44 @@
 require('express-async-errors')
 require("dotenv").config();
 const express = require('express')
-const app = express()
-app.use(express.json())
 const connectDB = require('./db/connect')
 const auth = require('./middleware/authenticator')
+const verifyAuth = require('./middleware/verifyJWT.js')
 const cors = require('cors');
+const cookieParser = require('cookie-parser');
 
+const app = express()
+app.use(express.json())
+app.use(cookieParser());
 app.use(cors())
 
 // controllers
-const  userLogin = require('./routes/userLogin')
-const { notAuthRouter,  productsRouter } = require('./routes/productsTasks')
+// const  userLogin = require('./routes/userLogin')
+const { allProductsRouter,  productsRouter } = require('./routes/productsTasks')
+
 // errors
 const notFound = require('./middleware/not-found')
-const errorHanddler = require('./middleware/errorHanddler')
+const errorHanddler = require('./middleware/errorHanddler');
+const { verify } = require('jsonwebtoken');
+
+
 
 // routes
 app.get('/', (req, res) => { res.send('Revisado BACK END') })
-app.use('/api/products/all', notAuthRouter );
-app.use('/api/auth', userLogin);
-app.use('/api/products', auth,  productsRouter);
+app.use('/api/products/all', allProductsRouter );
+// app.use('/api/auth', userLogin);
+app.use('/api/products', auth, productsRouter);
+app.use('/register',require('./routes/registerRoute'))
+app.use('/auth', require('./routes/authRoute'))
+
+
+
+
+
+//mont
+
+
+// app.use(verifyJWT);
 
 app.use(notFound);
 app.use(errorHanddler)
