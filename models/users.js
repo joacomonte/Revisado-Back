@@ -25,24 +25,24 @@ const usersSchema = new mongoose.Schema({
     },
 });
 
-usersSchema.pre('save', async function(){
-const salt = await bcrypt.genSalt(10);
-this.password = await bcrypt.hash(this.password, salt)
+// usersSchema.pre('save', async function(){
+// const salt = await bcrypt.genSalt(10);
+// this.password = await bcrypt.hash(this.password, salt)
 
-})
+// })
 
-usersSchema.methods.createJWT = function() {
-return jwt.sign( {userID : this._id, name : this.name }, 'jwtSecret', {expiresIn : '30d'} )
-}                                                         //procces.env.jwtsecret //procces.env.lifetime
+// usersSchema.methods.createJWT = function() {
+// return jwt.sign( {userID : this._id, name : this.name }, 'jwtSecret', {expiresIn : '30d'} )
+// }                                                         //procces.env.jwtsecret //procces.env.lifetime
 
-usersSchema.methods.comparePassword = async function(posiblePassword) {
- const isMatch = await bcrypt.compare(posiblePassword, this.password);
- return isMatch
-}    
+// usersSchema.methods.comparePassword = async function(posiblePassword) {
+//  const isMatch = await bcrypt.compare(posiblePassword, this.password);
+//  return isMatch
+// }    
 
-usersSchema.methods.setRefreshToken = async function(token) {
-    this.refreshToken=token;
-}    
+// usersSchema.methods.setRefreshToken = async function(token) {
+//     this.refreshToken=token;
+// }    
 
 
 
