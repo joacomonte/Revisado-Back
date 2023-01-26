@@ -6,6 +6,6 @@ const asyncWrapper = (fn) => {
             next(error)
         }
     }
-}
+ }
 
 module.exports = asyncWrapper
