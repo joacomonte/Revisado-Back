@@ -63,7 +63,8 @@ const updateProduct = asyncWrapper( async (req, res) => { // patch
     const { id: taskID } = req.params;
     const userID = req?.user?.userID || "Not loggin"
     const task = await Products.findOneAndUpdate({_id: taskID, publishBy : userID}, req.body, {
-        new: true, // devuelve el valor updateado            runValidators: true // checkea schema
+        new: true, // devuelve el valor updateado            
+        runValidators: true // checkea schema
         // overwrite : true // if true cambia solo le que le mandas, ( se usa PUT)
     });
     if(!task){

@@ -1,17 +1,22 @@
 require('express-async-errors')
 require("dotenv").config();
 const express = require('express')
-const app = express()
-app.use(express.json())
 const connectDB = require('./db/connect')
-const auth = require('./middleware/authenticator')
 const cors = require('cors');
-
-app.use(cors())
-
+const cookieParser = require('cookie-parser');
 // controllers
+const auth = require('./middleware/authenticator')
 const  userLogin = require('./routes/userLogin')
 const { notAuthRouter,  productsRouter } = require('./routes/productsTasks')
+
+const app = express()
+app.use(express.json())
+app.use(cors({
+   credentials: true,
+   origin: true,
+}))
+app.use(cookieParser());
+
 // errors
 const notFound = require('./middleware/not-found')
 const errorHanddler = require('./middleware/errorHanddler')
@@ -29,7 +34,7 @@ app.use(errorHanddler)
 const port = process.env.PORT || 3001;
 const start = async () => { 
  try{ 
-    await connectDB("mongodb+srv://revisado:playstation2@cluster0.dlopt2u.mongodb.net/Revisado?retryWrites=true&w=majority")
+    await connectDB("mongodb+srv://revisado:playstation2@cluster0.dlopt2u.mongodb.net/RevisadoTest?retryWrites=true&w=majority")
     app.listen(port, () => { console.log(`Revisado listening on port ${port}`)})
  } catch(err){
     console.log(err)
@@ -38,5 +43,4 @@ const start = async () => {
 //
 start();
 
-
-
+//sgsg
