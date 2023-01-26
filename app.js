@@ -17,7 +17,7 @@ app.use(cors({
 }))
 
 cors.SupportsCredentials = true;
-config.EnableCors(cors);
+
 app.use(cookieParser());
 
 // errors
