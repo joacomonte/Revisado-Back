@@ -17,6 +17,8 @@ app.use(cors({
 }))
 app.use(cookieParser());
 
+
+//s
 // errors
 const notFound = require('./middleware/not-found')
 const errorHanddler = require('./middleware/errorHanddler')
