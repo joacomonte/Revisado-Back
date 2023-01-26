@@ -4,13 +4,11 @@ const mongoose = require('mongoose');
 const productSchema = new mongoose.Schema({
     idProduct : {                 
         type : Number, 
-        required: [false, "must have  idProduct"],
-        trim: true,
-        unique: true,
+        required: false,
     },
     brand : {                 
         type : String, 
-        required: [false, "must have brand"],
+        required: [true, "must have brand"],
         enum: {
             values: ['sony', 'apple', 'google', 'samsung'],
             message : '{VALUE} NOT SUPPORTED' 
@@ -18,13 +16,13 @@ const productSchema = new mongoose.Schema({
     },
     modelName : {                 
         type : String, 
-        required: [false, "must have modelName"],
+        required: [true, "must have modelName"],
         trim: true,
         maxlength: [20, "modelName cant have more than 20 caracters"]
     },
     modelNumber : {                 
         type : String, 
-        required: [false, "must have  modelNumber"],
+        required: [true, "must have  modelNumber"],
         trim: true,
         maxlength: [30, "modelNumber cant have more than 20 caracters"]
     },
@@ -36,7 +34,7 @@ const productSchema = new mongoose.Schema({
     },
     nameToDisplay : {                 
         type : String, 
-        required: [false, "must have nameToDisplay"],
+        required: [true, "must have nameToDisplay"],
         trim: true,
         maxlength: [30, "nameToDisplay cant have more than 20 caracters"]
     },

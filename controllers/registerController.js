@@ -6,8 +6,12 @@ const { StatusCodes } = require('http-status-codes')
 
 const register = async (req, res) => {
   const user  = await Users.create({...req.body});
-  const token =  user.createJWT();
-  res.status(StatusCodes.CREATED).json({ user: {name : user.name}, token })
+  const token = user.createJWT();
+  const cookieToken = user.createJWT("1d")
+  res
+    .status(StatusCodes.CREATED)
+    .cookie('token',  cookieToken, { httpOnly : true})
+    .json({ user: user.name, token : token, cookieToken : cookieToken })
 }
 
 

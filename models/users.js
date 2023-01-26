@@ -11,13 +11,13 @@ const usersSchema = new mongoose.Schema({
     },
     email : {                 
         type : String, 
-        required: [true, "must have name"],
+        required: [true, "must have email"],
         match : [ /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/, "Please provide valid email"],
         unique: true,
     },
     password : {                 
         type : String, 
-        required: [true, "must have name"],
+        required: [true, "must have password"],
         maxlength: [20, "name cant have more than 20 caracters"],
         minlength: [2, "Must have more than 2 letters"],
     },
@@ -29,8 +29,8 @@ this.password = await bcrypt.hash(this.password, salt)
 
 })
 
-usersSchema.methods.createJWT = function() {
-return jwt.sign( {userID : this._id, name : this.name }, 'jwtSecret', {expiresIn : '30d'} )
+usersSchema.methods.createJWT = function(time = "1h") {
+return jwt.sign( {userID : this._id, name : this.name }, 'jwtSecret', {expiresIn : time} )
 }                                                         //procces.env.jwtsecret //procces.env.lifetime
 
 usersSchema.methods.comparePassword = async function(posiblePassword) {
