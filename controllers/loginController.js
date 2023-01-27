@@ -14,6 +14,7 @@ const login = async (req, res) => {
   const { email, password } = req.body;
   if(!email || !password){
     throw new errorBadRequest("no se introdujo mail o password")
+    //s
   }
   //check user
   const user = await Users.findOne({ email })
