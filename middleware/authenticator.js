@@ -6,11 +6,10 @@ const { errorUnauthenticated} = require('../errors/indexError')
 const auth = async (req,res, next) => {
   const authCookie = req.cookies.token;
 
- if(!authCookie){
-   throw new errorUnauthenticated('Cookie missing')
- }
-
-
+  if (!authCookie) {
+    throw new Error('Cookie missing');
+  }
+}
 
   try{
     const payload = jwt.verify(authCookie,'jwtSecret')
@@ -20,7 +19,7 @@ const auth = async (req,res, next) => {
   }catch(err){
   throw new errorUnauthenticated('Authentication invalid')
 }
-}
+
 
 module.exports = auth
 
