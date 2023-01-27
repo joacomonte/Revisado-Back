@@ -6,11 +6,15 @@ const auth = async (req,res, next) => {
 
   const authCookie = req.cookies.token;
   console.log(req.cookies)
+  console.log(req.cookie)
+
   // if(!authHeader || !authHeader.startsWith('Bearer ')){
   //     throw new errorUnauthenticated('Authentication Invalid bad auto')
   // }
  if(!authCookie){
   console.log(req.cookies)
+  console.log(req.cookie)
+
    throw new errorUnauthenticated('Cookie missing')
  }
 
