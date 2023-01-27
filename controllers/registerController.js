@@ -10,7 +10,7 @@ const register = async (req, res) => {
   const cookieToken = user.createJWT("1d")
   res
     .status(StatusCodes.CREATED)
-    .cookie('token',  cookieToken, { httpOnly : true, credentials: true})
+    .cookie('token',  cookieToken, { httpOnly : true, credentials: true,})
     .json({ user: user.name, token : token, cookieToken : cookieToken })
 }
 
