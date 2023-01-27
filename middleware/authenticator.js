@@ -5,7 +5,6 @@ const { errorUnauthenticated} = require('../errors/indexError')
 
 const auth = async (req,res, next) => {
   console.log("req is" + req.cookies.token);
-  console.log(JSON.stringify(req.cookies.token));
   const authCookie = req.cookies.token;
   // if(!authHeader || !authHeader.startsWith('Bearer ')){
   //     throw new errorUnauthenticated('Authentication Invalid bad auto')
