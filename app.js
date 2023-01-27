@@ -10,6 +10,7 @@ const  userLogin = require('./routes/userLogin')
 const { notAuthRouter,  productsRouter } = require('./routes/productsTasks')
 
 const app = express()
+
 app.use(express.json())
 
 app.use(cors({
@@ -42,7 +43,6 @@ const start = async () => {
     console.log(err)
  }  
 }
-//
+
 start();
 
-//ss
