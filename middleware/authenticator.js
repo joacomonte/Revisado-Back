@@ -5,18 +5,14 @@ const { errorUnauthenticated} = require('../errors/indexError')
 const auth = async (req,res, next) => {
 
   const authCookie = req.cookies.token;
-  console.log(req.cookies)
-  console.log(req.cookie)
-  console.log("este es el req" + req)
+
+  JSON.stringify("primero console, json req es: " + req)
 
   // if(!authHeader || !authHeader.startsWith('Bearer ')){
   //     throw new errorUnauthenticated('Authentication Invalid bad auto')
   // }
  if(!authCookie){
-  console.log(req.cookies)
-  console.log(req.cookie)
-  console.log("este es el req" + req)
-
+  JSON.stringify("entró a cookie false, json req es: " + req)
    throw new errorUnauthenticated('Cookie missing')
  }
 
