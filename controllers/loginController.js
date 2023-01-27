@@ -1,8 +1,4 @@
 const { Users } = require('../models/users');
-const cookie = require('cookie');
-import { NextApiRequest, NextApiResponse } from 'next'
-
-
 
 const  { errorBadRequest, errorUnauthenticated }  = require('../errors/indexError')
 
@@ -14,7 +10,6 @@ const login = async (req, res) => {
   const { email, password } = req.body;
   if(!email || !password){
     throw new errorBadRequest("no se introdujo mail o password")
-    //s
   }
   //check user
   const user = await Users.findOne({ email })
@@ -29,29 +24,12 @@ const login = async (req, res) => {
   }
   const token = user.createJWT();
   const cookieToken = user.createJWT("1d")
-  res.setHeader(
-    "Set-Cookie",
-    cookie.serialize(
-        "token", cookieToken,
-        {
-            httpOnly : true,
-            sameSite: 'none', 
-            secure : true,
-            // secure : process.env.NODE_ENV !== "development",
-            maxAge: 60 * 60 * 12, // 12 hora
-            path: "/"
-        }) 
-  )
-  res.status(200).json({ user: user.name, token : token, cookieToken : cookieToken })
-
-
-
-  // res.status(200)
-  //   .cookie('token',  cookieToken, { httpOnly : true, credentials: true})
-  //   .json({ user: user.name, token : token, cookieToken : cookieToken })
+  res.status(200)
+    .cookie('token',  cookieToken, { httpOnly : true})
+    .json({ user: user.name, token : token, cookieToken : cookieToken })
 }
 
-//hola
+
 
 module.exports = {
   login,
