@@ -29,7 +29,7 @@ const login = async (req, res) => {
   const token = user.createJWT();
   const cookieToken = user.createJWT("1d")
   res.status(200)
-    .cookie('token',  cookieToken, { httpOnly : true})
+    .cookie('token',  cookieToken, { httpOnly : true, credentials: true})
     .json({ user: user.name, token : token, cookieToken : cookieToken })
 }
 
