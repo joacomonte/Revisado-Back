@@ -12,10 +12,12 @@ const { notAuthRouter,  productsRouter } = require('./routes/productsTasks')
 const app = express()
 app.use(express.json())
 
-// app.use(cors({
-//    credentials: true,
-//    origin: true,
-// }))
+app.use(cors({
+   origin: '*',
+   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+   allowedHeaders: ['Content-Type', 'Authorization'],
+   credentials: true
+ }))
 
 app.use(cookieParser());
 
