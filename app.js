@@ -11,11 +11,12 @@ const { notAuthRouter,  productsRouter } = require('./routes/productsTasks')
 
 const app = express()
 app.use(express.json())
+app.use(cookieParser());
 app.use(cors({
    credentials: true,
    origin: true,
 }))
-app.use(cookieParser());
+
 
 
 //s
@@ -27,7 +28,7 @@ const errorHanddler = require('./middleware/errorHanddler')
 app.get('/', (req, res) => { res.send('Revisado BACK END') })
 app.use('/api/products/all', notAuthRouter );
 app.use('/api/auth', userLogin);
-app.use('/api/products', auth,  productsRouter);
+app.use('/api/products', console.log(req.cookies.token), auth,  productsRouter);
 
 app.use(notFound);
 app.use(errorHanddler)

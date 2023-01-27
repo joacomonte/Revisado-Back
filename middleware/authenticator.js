@@ -2,21 +2,14 @@ const { Users } = require('../models/users');
 const jwt = require('jsonwebtoken');
 const { errorUnauthenticated} = require('../errors/indexError')
 
+
 const auth = async (req,res, next) => {
-
+  console.log("req is" + req.cookies.token);
   const authCookie = req.cookies.token;
-
-  console.log("primer console, json req es: " + JSON.stringify(req))
-  alert("primer alert, json req es: " + JSON.stringify(req))
-  alert(JSON.stringify(req))
-
   // if(!authHeader || !authHeader.startsWith('Bearer ')){
   //     throw new errorUnauthenticated('Authentication Invalid bad auto')
   // }
  if(!authCookie){
-  console.log(JSON.stringify(req))
-  alert("entró a cookie false, json req es: " + JSON.stringify(req))
-  alert(JSON.stringify(req))
    throw new errorUnauthenticated('Cookie missing')
  }
 
@@ -31,8 +24,6 @@ const auth = async (req,res, next) => {
   }catch(err){
   throw new errorUnauthenticated('Authentication invalid')
 }
-
 }
 
-//
 module.exports = auth
