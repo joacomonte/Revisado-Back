@@ -7,7 +7,7 @@ const auth = async (req,res, next) => {
   const authCookie = req.cookies.token;
   console.log(req.cookies)
   console.log(req.cookie)
-  console.log(req)
+  Consolé.log("este es el req" + req)
 
   // if(!authHeader || !authHeader.startsWith('Bearer ')){
   //     throw new errorUnauthenticated('Authentication Invalid bad auto')
@@ -15,7 +15,7 @@ const auth = async (req,res, next) => {
  if(!authCookie){
   console.log(req.cookies)
   console.log(req.cookie)
-  console.log(req)
+  Consolé.log("este es el req" + req)
 
    throw new errorUnauthenticated('Cookie missing')
  }
