@@ -17,14 +17,13 @@ app.use(cors({
    origin: true,
 }))
 
-
+app.use(cookieParser());
 
 
 const notFound = require('./middleware/not-found')
 const errorHanddler = require('./middleware/errorHanddler')
 
 // routes
-app.use(cookieParser());
 app.get('/', (req, res) => { res.send('Revisado BACK END') })
 app.use('/api/products/all', notAuthRouter );
 app.use('/api/auth', userLogin);
@@ -43,6 +42,7 @@ const start = async () => {
     console.log(err)
  }  
 }
-
+//
 start();
 
+//ss
