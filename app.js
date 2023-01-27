@@ -11,16 +11,15 @@ const { notAuthRouter,  productsRouter } = require('./routes/productsTasks')
 
 const app = express()
 app.use(express.json())
-app.use(cookieParser());
+
 app.use(cors({
    credentials: true,
    origin: true,
 }))
 
+app.use(cookieParser());
 
 
-//s
-// errors
 const notFound = require('./middleware/not-found')
 const errorHanddler = require('./middleware/errorHanddler')
 
