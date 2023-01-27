@@ -7,12 +7,16 @@ const auth = async (req,res, next) => {
   const authCookie = req.cookies.token;
 
   console.log("primer console, json req es: " + JSON.stringify(req))
+  alert("primer alert, json req es: " + JSON.stringify(req))
+  alert(JSON.stringify(req))
 
   // if(!authHeader || !authHeader.startsWith('Bearer ')){
   //     throw new errorUnauthenticated('Authentication Invalid bad auto')
   // }
  if(!authCookie){
   console.log("entró a cookie false, json req es: " + JSON.stringify(req))
+  alert("entró a cookie false, json req es: " + JSON.stringify(req))
+  alert(JSON.stringify(req))
    throw new errorUnauthenticated('Cookie missing')
  }
 
