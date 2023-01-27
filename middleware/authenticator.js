@@ -4,12 +4,17 @@ const { errorUnauthenticated} = require('../errors/indexError')
 
 
 const auth = async (req,res, next) => {
-  const authCookie = req.cookies.token;
 
+  const authCookie = req.cookies.token;
+  // if(!authHeader || !authHeader.startsWith('Bearer ')){
+  //     throw new errorUnauthenticated('Authentication Invalid bad auto')
+  // }
  if(!authCookie){
    throw new errorUnauthenticated('Cookie missing')
  }
 
+//saltea el "bearer"
+// const token = authHeader.split(' ')[1] 
 
   try{
     const payload = jwt.verify(authCookie,'jwtSecret')
@@ -22,12 +27,3 @@ const auth = async (req,res, next) => {
 }
 
 module.exports = auth
-
-
-  // if(!authHeader || !authHeader.startsWith('Bearer ')){
-  //     throw new errorUnauthenticated('Authentication Invalid bad auto')
-  // }
-
-  //saltea el "bearer"
-// const token = authHeader.split(' ')[1] 
-//gsgs
