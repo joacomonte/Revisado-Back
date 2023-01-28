@@ -20,6 +20,16 @@ app.use(cors({
 
 app.use(cookieParser());
 
+app.use((req, res, next) => {
+   res.cookie("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySUQiOiI2M2QyZjgxY2EyNTk5YTM1Yjg2ZmNmNzgiLCJuYW1lIjoiam9hY28iLCJpYXQiOjE2NzQ4NjUxNjMsImV4cCI6MTY3NDk1MTU2M30.oyMWQvMHUUUwKxBPhfVxqjgashSGDI93v2CkpQMPn60", {
+     sameSite: "lax",
+     secure: false,
+     httpOnly: true,
+     maxAge: 60 * 60 * 24 * 7
+   });
+   next();
+ });
+
 
 const notFound = require('./middleware/not-found')
 const errorHanddler = require('./middleware/errorHanddler')
