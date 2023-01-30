@@ -13,10 +13,10 @@ const {
 
 
 productsRouter.route('/').get(getYourProducts).post(createProduct)
-productsRouter.get('/:id', getSingleProduct).patch('/:id',updateProduct).delete('/:id',deleteProduct)
+productsRouter.get('/:id', getSingleProduct).patch('/:id', updateProduct).delete('/:id', deleteProduct)
 
 notAuthRouter.route('/').get(getAllProducts)
 notAuthRouter.get('/:id', getSingleProduct)
 
 
-module.exports = {  productsRouter, notAuthRouter };
+module.exports = { productsRouter, notAuthRouter };
